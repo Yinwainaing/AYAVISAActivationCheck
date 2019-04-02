@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MainActivity"
+    android:layout_marginTop="@dimen/large_margin"
+    android:weightSum="4"
+    android:id="@+id/mlinearlayout"
+    android:background="@color/trans_success_stroke_color">
+
+    <EditText
+        android:id="@+id/et_cardno"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/icon_wh"
+        android:hint="0900045523576911"
+        android:inputType="number"
+        android:layout_marginRight="@dimen/large_margin"
+        android:layout_marginLeft="@dimen/large_margin"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:padding="@dimen/small_margin"
+        android:layout_weight="3"
+        android:maxLength="16"
+        android:background="@drawable/rounded_edittext"
+       />
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="@dimen/icon_wh"
+        android:layout_height="@dimen/icon_wh"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/icons8_google_web_search_filled_50"/>
+
+</LinearLayout>

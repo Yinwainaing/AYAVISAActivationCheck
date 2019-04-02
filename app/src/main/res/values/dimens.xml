@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="large_margin">16dp</dimen>
+    <dimen name="small_margin">4dp</dimen>
+    <dimen name="normal_margin">8dp</dimen>
+    <dimen name="icon_wh">40dp</dimen>
+    <dimen name="layout_topmergin">30dp</dimen>
+
+</resources>
