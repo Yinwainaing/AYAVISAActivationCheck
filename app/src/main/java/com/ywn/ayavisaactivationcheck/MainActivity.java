@@ -32,14 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private ArrayList<String> card_list = new ArrayList<String>();
-
+    private PopupWindow mPopupWindow;
     @BindView(R.id.mlinearlayout)
     LinearLayout linearLayout;
     @BindView(R.id.et_cardno)
     EditText et_cardno;
-
-    private PopupWindow mPopupWindow;
-
     @BindView(R.id.img_search)
     ImageView imgsearch;
 
@@ -53,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
         imgsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG, "onClick: " + et_cardno.getText().toString());
-                findCard(et_cardno.getText().toString());
+                if (et_cardno.getText().toString().equalsIgnoreCase("")) {
+                    findCard(et_cardno.getText().toString());
+                }
             }
         });
+
     }
 
     private void importCSV() {
@@ -92,8 +91,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         showPopup(flag);
-
-        Toast.makeText(this, flag ? "Found!!! Already Activated" : "Not Found!!! Please Activate", Toast.LENGTH_LONG).show();
     }
 
     private void showPopup(boolean flag) {
@@ -101,19 +98,19 @@ public class MainActivity extends AppCompatActivity {
         View customView = inflater.inflate(R.layout.popup_layout, null);
         mPopupWindow = new PopupWindow(
                 customView,
-                600,
-                600
+                800,
+                500
         );
         if (Build.VERSION.SDK_INT >= 21) {
             mPopupWindow.setElevation(5.0f);
         }
-        Button closeButton = (Button) customView.findViewById(R.id.btn_back);
-        ImageView img_result = (ImageView) customView.findViewById(R.id.img_result);
-        TextView textresult = (TextView) customView.findViewById(R.id.text_result);
-
-        if(flag){
+        Button closeButton = customView.findViewById(R.id.btn_back);
+        ImageView img_result = customView.findViewById(R.id.img_result);
+        TextView textresult =  customView.findViewById(R.id.text_result);
+        if (flag) {
             img_result.setImageResource(R.drawable.checked_50_green);
-            textresult.setText(" Found !!!! ");
+            textresult.setText(getResources().getString(R.string.found));
+
         }
         // Set a click listener for the popup window close button
         closeButton.setOnClickListener(new View.OnClickListener() {
